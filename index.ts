@@ -25,7 +25,7 @@ client.on('guildMemberAdd', (member: any) => {
   member.guild.channels.get('708783015484063897').send( // A changer !
     new RichEmbed()
       .setColor('#d347a6') // Je recommande : https://htmlcolorcodes.com
-      .setDescription(`Welcome ${member.user.username} 👶`)
+      .setDescription(`Bienvenue ${member.user.username} 👶`)
       .setTitle('Bienvenue toi !')
   );
 });
