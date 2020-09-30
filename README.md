@@ -4,11 +4,6 @@
 
 Suffit remplir votre ``.env`` avec votre token.
 
-# :clipboard: Comment exécuter ce package
-
-```bash
-npx templatebot-ts
-```
 
 # :wrench: Mettez votre token
 
