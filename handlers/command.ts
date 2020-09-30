@@ -13,7 +13,7 @@ module.exports = (client: any) => {
         client.commands.set(pull.name, pull);
         table.addRow(file, '✓');
       } else {
-        table.addRow(file, `❌  -> help.name MISSING.`);
+      table.addRow(file, `❌  -> help.name MANQUANT.`);
         continue;
       }
       if (pull.aliases && Array.isArray(pull.aliases))
