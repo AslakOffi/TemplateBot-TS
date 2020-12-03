@@ -1,7 +1,9 @@
 module.exports = {
   getMember: function(message: any, toFind: any = '') {
     toFind = toFind.toLowerCase();
+    
     let target = message.guild.members.get(toFind);
+    
     if (!target && message.mentions.members)
       target = message.mentions.members.first();
     if (!target && toFind) {
@@ -12,6 +14,7 @@ module.exports = {
         );
       });
     }
+    
     if (!target) target = message.member;
     return target;
   },
