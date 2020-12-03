@@ -1,6 +1,7 @@
 const { Client, Collection, RichEmbed } = require('discord.js');
 const { config } = require('dotenv');
 const client = new Client({ disableEveryone: true });
+
 client.commands = new Collection();
 client.aliases = new Collection();
 config({
@@ -9,6 +10,7 @@ config({
 ['command'].forEach(handler => {
   require(`./handlers/${handler}`)(client);
 });
+
 client.on('ready', () => {
   console.log(`Hi, ${client.user.username} is now online!`);
   client.user.setPresence({
@@ -19,6 +21,7 @@ client.on('ready', () => {
     }
   });
 });
+
 const newUsers = new Collection();
 client.on('guildMemberAdd', (member: any) => {
   newUsers.set(member.id, member.user);
@@ -29,6 +32,7 @@ client.on('guildMemberAdd', (member: any) => {
       .setTitle('Bienvenue toi !')
   );
 });
+
 client.on('guildMemberRemove', (member: any) => {
   if (newUsers.has(member.id)) newUsers.delete(member.id);
   member.guild.channels.get('708783015484063897').send( // A changer !
@@ -38,6 +42,7 @@ client.on('guildMemberRemove', (member: any) => {
       .setTitle('Il a préféré nous quitter..')
   );
 });
+
 client.on('message', async (message: any) => {
   const prefix: string = '!!'; // Vous pouvez changer bien évidemment.
   if (message.author.bot) return;
@@ -45,6 +50,7 @@ client.on('message', async (message: any) => {
   if (!message.content.startsWith(prefix)) return;
   if (!message.member)
     message.member = await message.guild.fetchMember(message);
+  
   const args = message.content
     .slice(prefix.length)
     .trim()
@@ -55,4 +61,5 @@ client.on('message', async (message: any) => {
   if (!command) command = client.commands.get(client.aliases.get(cmd));
   if (command) command.run(client, message, args);
 });
+
 client.login(process.env.TOKEN);
