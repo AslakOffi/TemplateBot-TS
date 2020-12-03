@@ -1,7 +1,11 @@
 import { readdirSync } from 'fs';
+
 const ascii = require('ascii-table');
+
 let table = new ascii('Commands');
+
 table.setHeading('Commands', 'STATUS');
+
 module.exports = (client: any) => {
   readdirSync('./commands/').forEach(dir => {
     const commands = readdirSync(`./commands/${dir}/`).filter(file =>
@@ -22,5 +26,6 @@ module.exports = (client: any) => {
         );
     }
   });
+  
   console.log(table.toString());
 };
