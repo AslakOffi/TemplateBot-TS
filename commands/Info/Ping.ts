@@ -1,4 +1,5 @@
 import { RichEmbed } from 'discord.js';
+
 module.exports = {
   name: 'ping',
   category: 'info',
