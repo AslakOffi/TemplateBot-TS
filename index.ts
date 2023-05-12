@@ -16,7 +16,7 @@ client.on('ready', () => {
   client.user.setPresence({
     status: 'online',
     game: {
-      name: 'Je te regarde..',
+      name: 'I'm looking at you.',
       type: 'WATCHING'
     }
   });
@@ -27,24 +27,24 @@ client.on('guildMemberAdd', (member: any) => {
   newUsers.set(member.id, member.user);
   member.guild.channels.get('708783015484063897').send( // A changer !
     new RichEmbed()
-      .setColor('#d347a6') // Je recommande : https://htmlcolorcodes.com
-      .setDescription(`Bienvenue ${member.user.username} 👶`)
-      .setTitle('Bienvenue toi !')
+      .setColor('#d347a6') // I recommend: https://htmlcolorcodes.com
+      .setDescription(`Welcome ${member.user.username} 👶`)
+      .setTitle('Welcome to you !')
   );
 });
 
 client.on('guildMemberRemove', (member: any) => {
   if (newUsers.has(member.id)) newUsers.delete(member.id);
-  member.guild.channels.get('708783015484063897').send( // A changer !
+  member.guild.channels.get('708783015484063897').send( //// To be modified !
     new RichEmbed()
-      .setColor('#d347a6') // Je recommande : https://htmlcolorcodes.com
+      .setColor('#d347a6') // I recommend: https://htmlcolorcodes.com
       .setDescription(`${member.user.username} ...`)
-      .setTitle('Il a préféré nous quitter..')
+      .setTitle('He preferred to leave us..')
   );
 });
 
 client.on('message', async (message: any) => {
-  const prefix: string = '!!'; // Vous pouvez changer bien évidemment.
+  const prefix: string = '!!'; // You can change of course.
   if (message.author.bot) return;
   if (!message.guild) return;
   if (!message.content.startsWith(prefix)) return;
